@@ -12,5 +12,23 @@
   </head>
   <body>
     <h1>Geolocation app</h1>
+    <p>
+      latitude: <span id="latitude"></span>&deg; <br />
+      latitude: <span id="longitude"></span>&deg;
+    </p>
+    <script>
+      if ("geolocation" in navigator) {
+        console.log("geolocation is available");
+
+        navigator.geolocation.getCurrentPosition((position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          document.getElementById("latitude").textContent = lat;
+          document.getElementById("longitude").textContent = lon;
+        });
+      } else {
+        console.log("geolocation is not available");
+      }
+    </script>
   </body>
 </html>
